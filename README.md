@@ -1,0 +1,4 @@
+# SolidElixir
+
+**TODO: Add description**
+
