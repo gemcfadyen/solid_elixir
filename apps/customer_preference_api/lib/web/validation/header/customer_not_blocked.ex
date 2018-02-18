@@ -1,6 +1,7 @@
 defmodule Validation.CustomerRestriction do
+  @behaviour Validation
 
-  def unrestricted(customer_id) do
+  def is_valid(customer_id) do
     if customer_id == "uuid-1" do
       {:ok, customer_id}
     else

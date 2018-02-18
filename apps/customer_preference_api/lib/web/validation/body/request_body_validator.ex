@@ -1,4 +1,5 @@
 defmodule Validation.RequestBodyValidator do
+  @behaviour Validator
 
   def is_valid(request_body) do
     with :ok <- has_preferences(request_body),

@@ -1,10 +1,11 @@
 defmodule Validation.HeaderValidator do
-  def validate(params) do
-    parameter_validators = [&Validation.RequestParameterValidator.has_valid_parameters/1,
-                            &Validation.CustomerRestriction.unrestricted/1]
 
-    Enum.map(parameter_validators, fn(header_validation) ->
-      {status, data} = header_validation.(params)
+  def validate(params) do
+    parameter_validators = [Validation.RequestParameterValidator,
+                            Validation.CustomerRestriction]
+
+    Enum.map(parameter_validators, fn(module_name) ->
+      {status, data} = module_name.is_valid(params)
 
       if status == :error do
         {:error, data}
