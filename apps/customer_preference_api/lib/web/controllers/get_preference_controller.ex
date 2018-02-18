@@ -1,4 +1,4 @@
-defmodule Controllers.PreferenceController do
+defmodule Controllers.GetPreferenceController do
 
   def get_preferences(customer_id) do
     Core.Preferences.GetCustomerPreferences.for(customer_id)
