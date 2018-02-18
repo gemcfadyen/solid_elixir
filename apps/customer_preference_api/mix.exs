@@ -29,7 +29,9 @@ defmodule CustomerPrefernceApi.Mixfile do
       {:plug, "~> 1.4"},
       {:cowboy, "~> 1.1"},
       {:hackney, "~> 1.9"},
-      {:poison, "~> 3.0"}
+      {:poison, "~> 3.0"},
+      {:ex_aws, "~> 2.0"},
+      {:ex_aws_dynamo, "~> 2.0"},
     ]
   end
 end
