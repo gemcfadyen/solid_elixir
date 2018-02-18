@@ -1,6 +1,6 @@
-defimpl Validator, for: Validation.CustomerRestriction do
+defmodule Validation.CustomerRestriction do
 
-  def validate(customer_id) do
+  def unrestricted(customer_id) do
     if customer_id == "uuid-1" do
       {:ok, customer_id}
     else
