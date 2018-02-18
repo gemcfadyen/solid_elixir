@@ -7,14 +7,9 @@ defmodule Plugs.GetCustomer do
 
   def call(conn, _opts) do
     IO.inspect("have hit the end point!")
-    send_resp(conn, 200, Poison.encode!("hello"))
     # validate the url parameters
-
-    # calls to a domain thing to fetch the record
-    # the format is different to what we want to provide back to the user
-    # reformat the data
-    # send response
-    #
-    # how hard to test all those combinations
+    IO.inspect(conn.path_params)
+    preferences = Controllers.PreferenceController.get_preferences(conn.path_params["id"])
+    send_resp(conn, 200, Poison.encode!(preferences))
   end
 end
