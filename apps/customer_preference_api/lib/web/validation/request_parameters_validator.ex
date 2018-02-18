@@ -1,6 +1,6 @@
 defmodule Validation.RequestParameterValidator do
   def has_valid_parameters(params) do
-    if valid?(params), do: {:ok, params["id"]}, else: {:error, :invalid_url_params}
+    if valid?(params), do: {:ok, params["id"]}, else: {:error, {:invalid_url_params, "URL Parameters need to be alpha numeric"}}
   end
 
   def valid?(%{"glob" => path_parameter_values}) do

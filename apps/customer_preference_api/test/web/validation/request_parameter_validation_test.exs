@@ -3,7 +3,7 @@ defmodule Validation.RequestParameterValidationTest do
 
   test "request has invalid url params" do
     response = Validation.RequestParameterValidator.has_valid_parameters(%{"glob" => ["£££"], "id" => "£££"})
-    assert response == {:error, :invalid_url_params}
+    assert response == {:error, {:invalid_url_params, "URL Parameters need to be alpha numeric"}}
   end
 
    test "request has valid url params" do

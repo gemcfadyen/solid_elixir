@@ -14,7 +14,7 @@ defmodule Validation.RequestBodyValidator do
     if not(is_nil(body["preferences"])) do
       :ok
     else
-      {:error, :no_preferences}
+      {:error, {:no_preferences, "Preferences section missing"}}
     end
   end
 
@@ -22,7 +22,7 @@ defmodule Validation.RequestBodyValidator do
     if not(is_nil(body["preferences"]["marketing"])) do
       :ok
     else
-      {:error, :no_marketing}
+      {:error, {:no_marketing, "Marketing section missing"}}
     end
   end
 
@@ -30,7 +30,7 @@ defmodule Validation.RequestBodyValidator do
     if not(is_nil(body["preferences"]["events"])) do
       :ok
     else
-      {:error, :no_events}
+      {:error, {:no_events, "Event section missing"}}
     end
   end
 

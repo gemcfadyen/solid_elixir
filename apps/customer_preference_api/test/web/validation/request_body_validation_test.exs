@@ -3,17 +3,17 @@ defmodule Validation.RequestBodyValidationTest do
 
   test "request has missing preferences" do
     response = Validation.RequestBodyValidator.is_valid(%{})
-    assert response == {:error, :no_preferences}
+    assert response == {:error, {:no_preferences, "Preferences section missing"}}
   end
 
   test "request has missing marketing section" do
     response = Validation.RequestBodyValidator.is_valid(%{"preferences" => %{}})
-    assert response == {:error, :no_marketing}
+    assert response == {:error, {:no_marketing, "Marketing section missing"}}
   end
 
   test "request has missing event section" do
     response = Validation.RequestBodyValidator.is_valid(%{"preferences" => %{"marketing" => %{}}})
-    assert response == {:error, :no_events}
+    assert response == {:error, {:no_events, "Event section missing"}}
   end
 
   test "valid request" do
