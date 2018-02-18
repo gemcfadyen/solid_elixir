@@ -1,8 +1,9 @@
 defmodule Routes.CustomerRoutes do
   use Plug.Router
 
-#  plug Plug.Parsers, parsers: [:json],
-#   json_decoder: Poison
+  plug Plug.Parsers,
+      parsers: [:json],
+      json_decoder: Poison
 
   plug :match
 

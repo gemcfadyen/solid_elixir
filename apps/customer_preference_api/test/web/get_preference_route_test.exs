@@ -1,10 +1,10 @@
-defmodule PreferenceControllerTest do
+defmodule GetPreferenceRouteTest do
   use ExUnit.Case
   use Plug.Test
 
   @opts Routes.Router.init([])
 
-  test "GET /users/id/scope returns successfully" do
+  test "GET /customers/uuid-1 returns successfully" do
     conn = conn(:get, "/customers/uuid-1")
 
     response = Routes.Router.call(conn, @opts)

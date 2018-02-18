@@ -1,4 +1,4 @@
-defmodule Core.Preferences.StoreCustomerPreferences do
+defmodule Core.Preferences.SaveCustomerPreferences do
 
   @type response_tuple :: {status :: atom, data :: %Schema.Database.CustomerPreferencesRow{}}
   @type error_tuple :: {status :: atom, reason :: atom}

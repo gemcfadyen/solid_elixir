@@ -6,8 +6,6 @@ defmodule Plugs.GetCustomer do
   end
 
   def call(conn, _opts) do
-    # validate the url parameters
-    IO.inspect(conn.path_params)
     preferences = Controllers.GetPreferenceController.get_preferences(conn.path_params["id"])
     send_resp(conn, 200, Poison.encode!(preferences))
   end
