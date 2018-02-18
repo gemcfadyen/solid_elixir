@@ -1,5 +1,6 @@
-defmodule Validation.RequestParameterValidator do
-  def has_valid_parameters(params) do
+defimpl Validator, for: Validation.ReqeustParameterValidator do
+
+  def validate(params) do
     if valid?(params), do: {:ok, params["id"]}, else: {:error, {:invalid_url_params, "URL Parameters need to be alpha numeric"}}
   end
 

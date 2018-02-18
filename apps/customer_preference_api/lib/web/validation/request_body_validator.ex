@@ -1,6 +1,6 @@
-defmodule Validation.RequestBodyValidator do
+defimpl Validator, for: Validation.ReqeustBodyValidator do
 
-  def is_valid(request_body) do
+  def validate(request_body) do
     with :ok <- has_preferences(request_body),
          :ok <- has_marketing_preferences(request_body),
          :ok <- has_event_preferences(request_body) do
