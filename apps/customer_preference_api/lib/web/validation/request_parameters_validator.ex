@@ -1,4 +1,4 @@
-defmodule Validation.RequestParameterValidator do
+defmodule Validation.RequestParameterValidation do
   def has_valid_parameters(params) do
     if valid?(params), do: {:ok, params["id"]}, else: {:error, :invalid_url_params}
   end
