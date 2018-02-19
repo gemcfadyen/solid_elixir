@@ -12,8 +12,24 @@ defmodule SavePreferenceRouteTest do
     assert response.status == 201
   end
 
+  test "POST /customers/invalid -id returns 400" do
+    conn = conn(:post, "/customers/invalid -id", http_body())
+
+    response = Routes.Router.call(conn, @opts)
+
+    assert response.status == 400
+  end
+
+  test "POST /customers/id with malformed body returns 400" do
+    conn = conn(:post, "/customers/invalid -id", %{})
+
+    response = Routes.Router.call(conn, @opts)
+
+    assert response.status == 400
+  end
+
   defp http_body() do
-    %{"customerId" => "uuid-1",
+    %{"id" => "uuid-1",
       "preferences" =>
       %{"marketing" =>
         %{

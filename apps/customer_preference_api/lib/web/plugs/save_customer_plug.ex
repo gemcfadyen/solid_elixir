@@ -10,7 +10,8 @@ defmodule Plugs.SaveCustomer do
     body = conn.body_params
 
     with {:ok, customer_id} <- Validation.HeaderValidator.validate(path_params),
-         {:ok, valid_body} <- Validation.BodyValidator.validate(body) do
+         {:ok, body} <- Validation.BodyValidator.validate(body) do
+           valid_body = Schema.Http.Request.new!(body, customer_id, body["version"])
            response = Controllers.SavePreferenceController.save_preferences(customer_id, valid_body)
            send_resp(conn, 201, Poison.encode!(response))
     else

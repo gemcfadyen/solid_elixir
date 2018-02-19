@@ -14,4 +14,9 @@ defmodule Schema.Http.Request do
   defp create_preferences(nil) do
     %{}
   end
+  defp create_preferences(preferences) do
+    formatted_preferences = preferences
+    #..formatting logic
+    formatted_preferences
+  end
 end
