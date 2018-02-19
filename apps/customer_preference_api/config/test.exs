@@ -9,3 +9,11 @@ config :ex_aws, :dynamodb,
   host: "localhost",
   port: 8889,
   region: "eu-west-1"
+
+
+config :customer_preference_api,
+  header_validators: [Validation.RequestParameterValidator,
+                      Validation.CustomerRestriction
+  ],
+  body_validators: [Validation.Body.PreferencesValidation,
+                    Validation.Body.MarketingValidation]

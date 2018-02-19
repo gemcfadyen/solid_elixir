@@ -1,10 +1,12 @@
 defmodule Validation.HeaderValidator do
+  @type ok_tuple :: {status :: atom, data :: String.t}
+  @type reason_tuple :: {status :: atom, reason :: String.t}
+  @type error_tuple :: {status :: atom, reason :: reason_tuple}
+  @type validators :: [Validator]
 
-  def validate(params) do
-    parameter_validators = [Validation.RequestParameterValidator,
-                            Validation.CustomerRestriction]
-
-    validate_all_rules(parameter_validators, params)
+  @spec validate(params :: map, header_validators :: validators) :: ok_tuple | error_tuple
+  def validate(params, header_validators) do
+    validate_all_rules(header_validators, params)
   end
 
   defp validate_all_rules([], params) do
