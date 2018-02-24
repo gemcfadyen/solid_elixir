@@ -4,7 +4,7 @@ defmodule Core.Reporting.LegalReportGenerator do
     generate_report([%{"preferences" => %{}}], Core.Reporting.MarketingReport)
   end
 
-  #Adding type spec
+  #Adding type spec means you need to be specific about what is being passed in. As far as im aware you can not state that you want a behaviour type in dialyzer
   #  @spec generate_report(data :: list(map()), historical_data_format :: Core.Reporting.MarketingReport) :: :ok
   def generate_report(data, formatter) do
     formatter.format_to_rows(data)
