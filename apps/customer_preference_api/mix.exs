@@ -32,6 +32,7 @@ defmodule CustomerPrefernceApi.Mixfile do
       {:poison, "~> 3.0"},
       {:ex_aws, "~> 2.0"},
       {:ex_aws_dynamo, "~> 2.0"},
+       {:mox, "~> 0.3.1"},
       {:dialyxir, "~> 0.5", only: :dev, runtime: false}
     ]
   end

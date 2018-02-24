@@ -11,9 +11,7 @@ config :ex_aws, :dynamodb,
   region: "eu-west-1"
 
 config :customer_preference_api,
-  aws_request: Database.FakeDatabase
-
-config :customer_preference_api,
+  aws_request: Database.MockRequest,
   header_validators: [Validation.RequestParameterValidator,
                       Validation.CustomerRestriction
   ],

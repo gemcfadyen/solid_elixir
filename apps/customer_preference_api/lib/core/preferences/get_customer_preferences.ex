@@ -1,10 +1,9 @@
 defmodule Core.Preferences.GetCustomerPreferences do
+  @aws_request Application.get_env(:customer_preference_api, :aws_request)
 
   def for(customer_id) do
-    database = Application.get_env(:customer_preference_api, :aws_request)
-
     ExAws.Dynamo.get_item("customer-preferences", %{id: customer_id})
-    |> database.request
+    |> @aws_request.request
     |> decode
   end
 
