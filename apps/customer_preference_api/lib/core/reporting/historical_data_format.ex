@@ -1,5 +1,6 @@
 defmodule Core.Reporting.HistoricalDataReport do
   @behaviour Core.Reporting.Formatter
+  @behaviour Core.Reporting.Presentation
 
   @impl true
   def format_to_rows(data) do
@@ -9,17 +10,20 @@ defmodule Core.Reporting.HistoricalDataReport do
     {:ok, formatted_data}
   end
 
+  @impl true
   def add_disclaimer(data) do
     IO.inspect("..adding disclaimer..")
     #...adds legal disclaimer
     data
   end
 
+  @impl true
   def add_header(data) do
     IO.inspect("..adding header..")
     data
   end
 
+  @impl true
   def colour(data) do
     IO.inspect("..adding colour..")
     data
