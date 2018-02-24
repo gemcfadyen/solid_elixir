@@ -8,4 +8,19 @@ defmodule Core.Reporting.AdvertisingReport do
     #... some data clensing and reformatting logic
     {:ok, formatted_data}
   end
+
+  def add_disclaimer(data) do
+    IO.puts("nothing to do..")
+    data
+  end
+
+  def add_header(data) do
+    IO.puts("nothing to do..")
+    data
+  end
+
+  def colour(data) do
+    IO.puts("nothing to do..")
+    data
+  end
 end
