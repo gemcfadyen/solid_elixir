@@ -1,6 +1,7 @@
 defmodule Validation.RequestBodyValidator do
   @behaviour Validation
 
+  @impl true
   def is_valid(request_body) do
     with :ok <- has_preferences(request_body),
          :ok <- has_marketing_preferences(request_body),
