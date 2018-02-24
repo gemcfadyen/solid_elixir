@@ -10,6 +10,8 @@ config :ex_aws, :dynamodb,
   port: 8889,
   region: "eu-west-1"
 
+config :customer_preference_api,
+  aws_request: Database.FakeDatabase
 
 config :customer_preference_api,
   header_validators: [Validation.RequestParameterValidator,

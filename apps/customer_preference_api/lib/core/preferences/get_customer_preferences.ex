@@ -1,6 +1,8 @@
 defmodule Core.Preferences.GetCustomerPreferences do
 
-  def for(customer_id, database \\ ExAws) do
+  def for(customer_id) do
+    database = Application.get_env(:customer_preference_api, :aws_request)
+
     ExAws.Dynamo.get_item("customer-preferences", %{id: customer_id})
     |> database.request
     |> decode
@@ -10,7 +12,6 @@ defmodule Core.Preferences.GetCustomerPreferences do
     {:error, :not_found}
   end
   defp decode({:ok, response}) do
-    IO.inspect(response)
     valid_consent_user = ExAws.Dynamo.decode_item(response, as: Schema.Database.CustomerPreferencesRow)
 
     {:ok, valid_consent_user}

@@ -1,7 +1,16 @@
-defmodule FakeDatabase do
-  def request(data) do
-    IO.puts("Saving data...")
-    canned_result = %{"Item" =>
+defmodule Database.FakeDatabase do
+  @behaviour Database.Request
+
+  @impl true
+  def request(op, config_overrides \\ [])
+
+  @impl true
+  def request(%{http_method: :post}, _) do
+    {:ok, canned_result()}
+  end
+
+  def canned_result do
+    %{"Item" =>
       %{"id" => %{"S" => "uuid-1"},
         "preferences" => %{"M" =>
           %{"events" => %{"M" =>
@@ -18,7 +27,5 @@ defmodule FakeDatabase do
                 "byPost" => %{"M" =>
                   %{"status" => %{"BOOL" => true},
                     "thirdParty" => %{"BOOL" => true}}}}}}}}}
-
-    {:ok, canned_result}
   end
 end

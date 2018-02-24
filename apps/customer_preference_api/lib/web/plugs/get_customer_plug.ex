@@ -6,8 +6,7 @@ defmodule Plugs.GetCustomer do
   end
 
   def call(conn, _opts) do
-    database = ExAws
-    preferences = Controllers.GetPreferenceController.get_preferences(conn.path_params["id"], database)
+    preferences = Controllers.GetPreferenceController.get_preferences(conn.path_params["id"])
     send_resp(conn, 200, Poison.encode!(preferences))
   end
 end

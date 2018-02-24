@@ -9,3 +9,6 @@ config :ex_aws, :dynamodb,
   host: "localhost",
   port: 8889,
   region: "eu-west-1"
+
+config :customer_preference_api,
+  aws_request: Database.AwsRequest
