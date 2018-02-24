@@ -1,6 +1,7 @@
 defmodule Validation.Body.MarketingValidation do
   @behaviour Validation
 
+  @impl true
   def is_valid(request_body) do
     with {:ok, body} <- has_marketing_section(request_body) do
       {:ok, body}

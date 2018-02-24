@@ -1,6 +1,7 @@
 defmodule Core.Reporting.MarketingReport do
-  @behaivour Core.Reporting.Formatter
+  @behaviour Core.Reporting.Formatter
 
+  @impl true
   def format_to_rows(data) do
     formatted_data = data
     IO.inspect("Format marketing report")

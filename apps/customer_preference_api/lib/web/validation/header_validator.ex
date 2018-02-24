@@ -2,9 +2,12 @@ defmodule Validation.HeaderValidator do
   @type ok_tuple :: {status :: atom, data :: term}
   @type reason_tuple :: {status :: atom, reason :: String.t}
   @type error_tuple :: {status :: atom, reason :: reason_tuple}
-  @type validators :: [Validation]
 
-  @spec validate(params :: map, header_validators :: validators) :: ok_tuple | error_tuple
+  def entry_point do
+    validate(%{},  [Validation.CustomerRestriction])
+  end
+
+  @spec validate(params :: map, header_validators :: list) :: ok_tuple | error_tuple
   def validate(params, header_validators) do
     validate_all_rules(header_validators, params)
   end

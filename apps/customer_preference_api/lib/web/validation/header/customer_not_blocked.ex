@@ -1,6 +1,7 @@
 defmodule Validation.CustomerRestriction do
   @behaviour Validation
 
+  @impl true
   def is_valid(params) do
     if params["id"] == "uuid-1" do
       {:ok, params["id"]}
