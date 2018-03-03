@@ -29,28 +29,18 @@ defmodule SavePreferenceRouteTest do
   end
 
   defp http_body() do
-    %{"id" => "uuid-1",
+    %{"customerId" => "uuid-1",
       "preferences" =>
-      %{"marketing" =>
-        %{
-          "byPost" => %{
-            "status" => true,
-            "thirdParty" => true
-          },
-          "byEmail" => %{
-            "status" => false,
-            "thirdParty" => false
-          }
+      %{"accommodation" =>
+        %{"appartment" => %{
+          "catering" => "self_catering",
+          "bedrooms" => 2,
+          "parking" => "secure"
         },
-        "events" =>
-        %{
-          "byPost" => %{
-            "status" => true,
-            "thirdParty" => false
-          },
-          "byEmail" => %{
-            "status" => false,
-            "thirdParty" => false
+          "house" =>
+          %{"catering" => "self_catering",
+            "bedrooms" => 1,
+            "parking" => "secure"
           }
         }
       }
