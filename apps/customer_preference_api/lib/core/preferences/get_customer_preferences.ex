@@ -17,26 +17,4 @@ defmodule Core.Preferences.GetCustomerPreferences do
   defp decode({:error, response}) do
     {:error, response}
   end
-
-  def temp do
-    data =
-      %{"customerId" => "uuid-1",
-        "preferences" => %{
-          "accommodation" => %{
-            "apartment" => %{
-              "catering" => "self_catering",
-              "bedrooms" => 2,
-              "parking" => "secure"
-            },
-            "hotel" => %{
-              "catering" => "catered",
-              "bedrooms" => 1,
-              "parking" => "none"
-            }
-          }
-        }
-      }
-    Poison.encode!(data)
-    |> Poison.decode!
-  end
 end
