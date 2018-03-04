@@ -2,8 +2,7 @@ defmodule Validation.RequestBodyValidator do
 
   def is_valid(request_body) do
     with :ok <- has_preferences(request_body),
-         :ok <- has_marketing_preferences(request_body),
-         :ok <- has_event_preferences(request_body) do
+         :ok <- has_accommodation_preferences(request_body) do
            {:ok, format_to_internal_request(request_body)}
     else
       res = {:error, _} -> res
@@ -18,19 +17,11 @@ defmodule Validation.RequestBodyValidator do
     end
   end
 
-  defp has_marketing_preferences(body) do
-    if not(is_nil(body["preferences"]["marketing"])) do
+  defp has_accommodation_preferences(body) do
+    if not(is_nil(body["preferences"]["accommodation"])) do
       :ok
     else
-      {:error, {:no_marketing, "Marketing section missing"}}
-    end
-  end
-
-  defp has_event_preferences(body) do
-    if not(is_nil(body["preferences"]["events"])) do
-      :ok
-    else
-      {:error, {:no_events, "Event section missing"}}
+      {:error, {:no_accommodation, "Accommodation section missing"}}
     end
   end
 
