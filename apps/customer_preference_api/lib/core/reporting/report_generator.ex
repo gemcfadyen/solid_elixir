@@ -2,7 +2,7 @@ defmodule Core.Reporting.ReportGenerator do
   def entry_point() do
     data = [%{}]
     formatted_data = generate_report(data,
-                                     [Core.Reporting.MarketingReport,
+                                     [Core.Reporting.TrendsReport,
                                       Core.Reporting.AdvertisingReport,
                                       Core.Reporting.HistoricalDataReport])
 
@@ -10,7 +10,7 @@ defmodule Core.Reporting.ReportGenerator do
     |> dispatch
   end
 
-  @spec generate_standard_reports(data :: map, formats :: list) :: atom
+  @spec generate_report(data :: map, formats :: list) :: atom
   def generate_report(data, formats) do
     formatted_reports = Enum.map(formats, fn(format) ->
       format.format_to_rows(data)
@@ -18,10 +18,10 @@ defmodule Core.Reporting.ReportGenerator do
     dispatch(formatted_reports)
   end
 
-  @spec styled_reports(data :: map, presenters:: list) :: atom
+  @spec present_report(formatted_data :: map, presenters:: list) :: atom
   def present_report(formatted_data, presenters) do
     formatted_reports = Enum.map(presenters, fn(presenter) ->
-      |> presenter.add_disclaimer()
+      presenter.add_disclaimer()
       |> presenter.add_header()
       |> presenter.colour()
       |> dispatch
