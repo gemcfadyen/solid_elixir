@@ -18,4 +18,4 @@ config :customer_preference_api,
                       Validation.CustomerRestriction
   ],
   body_validators: [Validation.Body.PreferencesValidation,
-                    Validation.Body.MarketingValidation]
+                    Validation.Body.AccommodationValidation]

@@ -10,22 +10,18 @@ defmodule Database.FakeDatabase do
   end
 
   def canned_result do
+    IO.puts("Saving data...")
+
     %{"Item" =>
       %{"id" => %{"S" => "uuid-1"},
         "preferences" => %{"M" =>
-          %{"events" => %{"M" =>
-            %{"byEmail" => %{"M" =>
-              %{"status" => %{"BOOL" => false},
-                "thirdParty" => %{"BOOL" => false}}},
-              "byPost" => %{"M" =>
-                %{"status" => %{"BOOL" => true},
-                  "thirdParty" => %{"BOOL" => false}}}}},
-            "marketing" => %{"M" =>
-              %{"byEmail" => %{"M" =>
-                %{"status" => %{"BOOL" => false},
-                  "thirdParty" => %{"BOOL" => false}}},
-                "byPost" => %{"M" =>
-                  %{"status" => %{"BOOL" => true},
-                    "thirdParty" => %{"BOOL" => true}}}}}}}}}
+          %{"accommodation" => %{"M" =>
+            %{"apartment" => %{"M" =>
+              %{"bedrooms" => %{"N" => "2"},
+                "catering" => %{"S" => "self_catering"},
+                "parking" => %{"S" => "secure"}}},
+              "hotel" => %{"M" => %{"bedrooms" => %{"N" => "1"},
+                "catering" => %{"S" => "catered"},
+                "parking" => %{"S" => "secure"}}}}}}}}}
   end
 end

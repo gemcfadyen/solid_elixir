@@ -5,7 +5,7 @@ defmodule Core.Preferences.GetCustomerPreferencesTest do
     {:ok, result} = Core.Preferences.GetCustomerPreferences.for("1")
 
     assert result.id == "uuid-1"
-    assert result.preferences["events"]["byEmail"]["status"] == false
-    assert result.preferences["events"]["byPost"]["status"] == true
+    assert result.preferences["accommodation"]["apartment"]["catering"] == "self_catering"
+    assert result.preferences["accommodation"]["hotel"]["parking"] == "secure"
   end
 end
