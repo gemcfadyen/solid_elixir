@@ -2,7 +2,7 @@ defmodule Validation.BodyValidator do
   @type ok_tuple :: {status :: atom, data :: String.t}
   @type reason_tuple :: {status :: atom, reason :: String.t}
   @type error_tuple :: {status :: atom, reason :: reason_tuple}
-  @type validators :: [Validator]
+  @type validators :: [Validation]
 
   @spec validate(body:: map, header_validators :: validators) :: ok_tuple | error_tuple
   def validate(body, body_validators) do

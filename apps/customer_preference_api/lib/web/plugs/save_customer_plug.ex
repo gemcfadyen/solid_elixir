@@ -21,5 +21,4 @@ defmodule Plugs.SaveCustomer do
       {:error, {_, reason}} -> send_resp(conn, 400, Poison.encode!(%{error: reason}))
     end
   end
-
 end

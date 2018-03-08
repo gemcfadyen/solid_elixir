@@ -29,7 +29,7 @@ defmodule SavePreferenceRouteTest do
   end
 
   defp http_body() do
-    %{"customerId" => "uuid-1",
+    %{"id" => "uuid-1",
       "preferences" =>
       %{"accommodation" =>
         %{"appartment" => %{

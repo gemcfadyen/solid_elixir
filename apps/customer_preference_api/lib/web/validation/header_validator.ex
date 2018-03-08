@@ -2,7 +2,7 @@ defmodule Validation.HeaderValidator do
   @type ok_tuple :: {status :: atom, data :: String.t}
   @type reason_tuple :: {status :: atom, reason :: String.t}
   @type error_tuple :: {status :: atom, reason :: reason_tuple}
-  @type validators :: [Validator]
+  @type validators :: [Validation]
 
   @spec validate(params :: map, header_validators :: validators) :: ok_tuple | error_tuple
   def validate(params, header_validators) do
@@ -21,6 +21,4 @@ defmodule Validation.HeaderValidator do
       validate_all_rules(tail, params)
     end
   end
-
-
 end

@@ -1,5 +1,5 @@
 defmodule Validation.Body.AccommodationValidation do
-  @behaviour Validator
+  @behaviour Validation
 
   def is_valid(request_body) do
     with {:ok, body} <- has_accommodation_section(request_body) do

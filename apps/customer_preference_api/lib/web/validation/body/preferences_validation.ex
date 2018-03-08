@@ -1,5 +1,5 @@
 defmodule Validation.Body.PreferencesValidation do
-  @behaviour Validator
+  @behaviour Validation
 
   def is_valid(request_body) do
     with {:ok, body} <- has_preferences_section(request_body) do

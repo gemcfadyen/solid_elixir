@@ -1,5 +1,5 @@
 defmodule Validation.RequestBodyValidator do
-  @behaviour Validator
+  @behaviour Validation
 
   def is_valid(request_body) do
     with :ok <- has_preferences(request_body),
@@ -23,14 +23,6 @@ defmodule Validation.RequestBodyValidator do
       :ok
     else
       {:error, {:no_accommodation, "Accommodation section missing"}}
-    end
-  end
-
-  defp has_event_preferences(body) do
-    if not(is_nil(body["preferences"]["events"])) do
-      :ok
-    else
-      {:error, {:no_events, "Event section missing"}}
     end
   end
 
