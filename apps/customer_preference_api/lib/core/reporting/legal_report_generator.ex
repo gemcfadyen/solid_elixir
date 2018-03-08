@@ -1,7 +1,7 @@
 defmodule Core.Reporting.LegalReportGenerator do
 
   def entry_point do
-    generate_report([%{"preferences" => %{}}], Core.Reporting.MarketingReport)
+    generate_report([%{"preferences" => %{}}], Core.Reporting.TrendsReport)
   end
 
   #Adding type spec means you need to be specific about what is being passed in. As far as im aware you can not state that you want a behaviour type in dialyzer

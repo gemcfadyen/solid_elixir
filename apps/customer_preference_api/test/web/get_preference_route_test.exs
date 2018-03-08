@@ -16,29 +16,22 @@ defmodule GetPreferenceRouteTest do
 
     assert response.status == 200
     assert response.resp_body =~ "preferences"
-    assert response.resp_body =~ "marketing"
-    assert response.resp_body =~ "events"
-    assert response.resp_body =~ "byEmail"
-    assert response.resp_body =~ "byPost"
+    assert response.resp_body =~ "accommodation"
+    assert response.resp_body =~ "apartment"
+    assert response.resp_body =~ "hotel"
   end
 
   def canned_result do
     %{"Item" =>
       %{"id" => %{"S" => "uuid-1"},
         "preferences" => %{"M" =>
-          %{"events" => %{"M" =>
-            %{"byEmail" => %{"M" =>
-              %{"status" => %{"BOOL" => false},
-                "thirdParty" => %{"BOOL" => false}}},
-              "byPost" => %{"M" =>
-                %{"status" => %{"BOOL" => true},
-                  "thirdParty" => %{"BOOL" => false}}}}},
-            "marketing" => %{"M" =>
-              %{"byEmail" => %{"M" =>
-                %{"status" => %{"BOOL" => false},
-                  "thirdParty" => %{"BOOL" => false}}},
-                "byPost" => %{"M" =>
-                  %{"status" => %{"BOOL" => true},
-                    "thirdParty" => %{"BOOL" => true}}}}}}}}}
+          %{"accommodation" => %{"M" =>
+            %{"apartment" => %{"M" =>
+              %{"bedrooms" => %{"N" => "2"},
+                "catering" => %{"S" => "self_catering"},
+                "parking" => %{"S" => "secure"}}},
+              "hotel" => %{"M" => %{"bedrooms" => %{"N" => "1"},
+                "catering" => %{"S" => "catered"},
+                "parking" => %{"S" => "secure"}}}}}}}}}
   end
 end

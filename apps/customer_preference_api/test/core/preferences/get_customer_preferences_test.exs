@@ -10,28 +10,23 @@ defmodule Core.Preferences.GetCustomerPreferencesTest do
     {:ok, result} = Core.Preferences.GetCustomerPreferences.for("1")
 
     assert result.id == "uuid-1"
-    assert result.preferences["events"]["byEmail"]["status"] == false
-    assert result.preferences["events"]["byPost"]["status"] == true
+    assert result.preferences["accommodation"]["apartment"]["bedrooms"] == 2
+    assert result.preferences["accommodation"]["hotel"]["catering"] == "catered"
   end
 
   def canned_result do
+    IO.puts("Saving data...")
+
     %{"Item" =>
       %{"id" => %{"S" => "uuid-1"},
         "preferences" => %{"M" =>
-          %{"events" => %{"M" =>
-            %{"byEmail" => %{"M" =>
-              %{"status" => %{"BOOL" => false},
-                "thirdParty" => %{"BOOL" => false}}},
-              "byPost" => %{"M" =>
-                %{"status" => %{"BOOL" => true},
-                  "thirdParty" => %{"BOOL" => false}}}}},
-            "marketing" => %{"M" =>
-              %{"byEmail" => %{"M" =>
-                %{"status" => %{"BOOL" => false},
-                  "thirdParty" => %{"BOOL" => false}}},
-                "byPost" => %{"M" =>
-                  %{"status" => %{"BOOL" => true},
-                    "thirdParty" => %{"BOOL" => true}}}}}}}}}
+          %{"accommodation" => %{"M" =>
+            %{"apartment" => %{"M" =>
+              %{"bedrooms" => %{"N" => "2"},
+                "catering" => %{"S" => "self_catering"},
+                "parking" => %{"S" => "secure"}}},
+              "hotel" => %{"M" => %{"bedrooms" => %{"N" => "1"},
+                "catering" => %{"S" => "catered"},
+                "parking" => %{"S" => "secure"}}}}}}}}}
   end
-
 end
