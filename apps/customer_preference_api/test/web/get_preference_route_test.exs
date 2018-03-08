@@ -11,9 +11,8 @@ defmodule GetPreferenceRouteTest do
 
     assert response.status == 200
     assert response.resp_body =~ "preferences"
-    assert response.resp_body =~ "marketing"
-    assert response.resp_body =~ "events"
-    assert response.resp_body =~ "byEmail"
-    assert response.resp_body =~ "byPost"
+    assert response.resp_body =~ "accommodation"
+    assert response.resp_body =~ "apartment"
+    assert response.resp_body =~ "hotel"
   end
 end
