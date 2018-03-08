@@ -4,20 +4,15 @@ defmodule FakeDatabase do
     canned_result = %{"Item" =>
       %{"id" => %{"S" => "uuid-1"},
         "preferences" => %{"M" =>
-          %{"events" => %{"M" =>
-            %{"byEmail" => %{"M" =>
-              %{"status" => %{"BOOL" => false},
-                "thirdParty" => %{"BOOL" => false}}},
-              "byPost" => %{"M" =>
-                %{"status" => %{"BOOL" => true},
-                  "thirdParty" => %{"BOOL" => false}}}}},
-            "marketing" => %{"M" =>
-              %{"byEmail" => %{"M" =>
-                %{"status" => %{"BOOL" => false},
-                  "thirdParty" => %{"BOOL" => false}}},
-                "byPost" => %{"M" =>
-                  %{"status" => %{"BOOL" => true},
-                    "thirdParty" => %{"BOOL" => true}}}}}}}}}
+          %{"accommodation" => %{"M" =>
+            %{"apartment" => %{"M" =>
+              %{"catering" => %{"S" => "self_catering"},
+                "bedrooms" => %{"N" => 2},
+                "parking" => %{"S" => "secure"}}},
+              "hotel" => %{"M" =>
+                %{"catering" => %{"S" => "self_catering"},
+                  "bedrooms" => %{"N" => 1},
+                  "parking" => %{"S" => "secure"}}}}}}}}}
 
     {:ok, canned_result}
   end
