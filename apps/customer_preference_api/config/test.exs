@@ -12,8 +12,5 @@ config :ex_aws, :dynamodb,
 
 
 config :customer_preference_api,
-  header_validators: [Validation.RequestParameterValidator,
-                      Validation.CustomerRestriction
-  ],
-  body_validators: [Validation.Body.PreferencesValidation,
-                    Validation.Body.AccommodationValidation]
+  header_validators: [Validation.RequestParameterValidator],
+  body_validators: [Validation.Body.PreferencesValidation]
