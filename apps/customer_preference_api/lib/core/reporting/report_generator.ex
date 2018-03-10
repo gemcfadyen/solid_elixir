@@ -3,10 +3,9 @@ defmodule Core.Reporting.ReportGenerator do
     data = [%{}]
     formatted_data = generate_report(data,
                                      [Core.Reporting.TrendsReport,
-                                      Core.Reporting.AdvertisingReport,
-                                      Core.Reporting.HistoricalDataReport])
+                                      Core.Reporting.AdvertisingReport])
 
-    present_report(formatted_data, [Core.Reporting.HistoricalDataReport])
+    present_report(data, [Core.Reporting.HistoricalDataReport])
     |> dispatch
   end
 
