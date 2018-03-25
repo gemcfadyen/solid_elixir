@@ -3,14 +3,23 @@ defmodule Validation.HeaderValidator do
     parameter_validators = [&Validation.RequestParameterValidator.has_valid_parameters/1,
                             &Validation.CustomerRestriction.unrestricted/1]
 
-    Enum.map(parameter_validators, fn(header_validation) ->
-      {status, data} = header_validation.(params)
+    validate(params, parameter_validators)
+  end
 
-      if status == :error do
-        {:error, data}
-      end
-    end)
+  def validate(params, header_validators) do
+    validate_all_rules(header_validators, params)
+  end
 
+  defp validate_all_rules([], params) do
     {:ok, params["id"]}
+  end
+  defp validate_all_rules([rule|tail], params) do
+    {status, data} = rule.(params)
+
+    if status == :error do
+      {:error, data}
+    else
+      validate_all_rules(tail, params)
+    end
   end
 end

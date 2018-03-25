@@ -1,8 +1,8 @@
 defmodule Validation.CustomerRestriction do
 
-  def unrestricted(customer_id) do
-    if customer_id == "uuid-1" do
-      {:ok, customer_id}
+  def unrestricted(params) do
+    if params["id"] == "uuid-1" do
+      {:ok, params}
     else
       {:error, {:restricted, "Customer is restricted"}}
     end

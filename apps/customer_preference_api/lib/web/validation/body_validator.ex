@@ -1,13 +1,22 @@
 defmodule Validation.BodyValidator do
   def validate(body) do
     body_validators = [&Validation.RequestBodyValidator.is_valid/1]
+    validate(body, body_validators)
+  end
 
-    Enum.map(body_validators, fn(body_validation) ->
-      {status, data} = body_validation.(body)
-      if status == :error do
-        {:error, data}
-      end
-    end)
+  def validate(body, body_validators) do
+    validate_all_rules(body_validators, body)
+  end
+
+  defp validate_all_rules([], body) do
     {:ok, body}
+  end
+  defp validate_all_rules([rule|tail], body) do
+    {status, data} = rule.(body)
+    if status == :error do
+      {:error, data}
+    else
+      validate_all_rules(tail, body)
+    end
   end
 end

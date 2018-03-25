@@ -14,7 +14,8 @@ defmodule Plugs.SaveCustomer do
            response = Controllers.SavePreferenceController.save_preferences(customer_id, valid_body)
            send_resp(conn, 201, Poison.encode!(response))
     else
-      {:error, {_, reason}} -> send_resp(conn, 400, Poison.encode!(%{error: reason}))
+      {:error, {_, reason}} ->
+        send_resp(conn, 400, Poison.encode!(%{error: reason}))
     end
   end
 
