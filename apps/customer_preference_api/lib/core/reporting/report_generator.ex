@@ -17,12 +17,13 @@ defmodule Core.Reporting.ReportGenerator do
     dispatch(formatted_reports)
   end
 
-  @spec present_report(formatted_data :: map, presenters:: list) :: atom
-  def present_report(formatted_data, presenters) do
-    formatted_reports = Enum.map(presenters, fn(presenter) ->
-      presenter.add_disclaimer()
-      |> presenter.add_header()
-      |> presenter.colour()
+  @spec present_report(data :: map, presenter_formats:: list) :: atom
+  def present_report(data, presenter_formats) do
+    formatted_reports = Enum.map(presenter_formats, fn(presenter_format) ->
+      presenter_format.format_to_rows(data)
+      |> presenter_format.add_disclaimer()
+      |> presenter_format.add_header()
+      |> presenter_format.colour()
       |> dispatch
     end)
   end
